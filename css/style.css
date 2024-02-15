@@ -1,3 +1,17 @@
+@import url(https://db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=Beaufort+for+LOL+Bold);
+
+@font-face {
+    font-family: "Beaufort for LOL Bold";
+    src: url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.eot");
+    src: url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.svg#Beaufort for LOL Bold")format("svg");
+}
+
+
+
 
 
 #container-global::before {
@@ -50,7 +64,7 @@
     display: inline-block;
 }
 
-.championImageContainer:hover .championTextTitle, .championImageContainer:hover .championTextTags {
+.championImageContainer:hover .championTextTitle, .championImageContainer:hover .championImgTags {
     display: block;
     
 }
@@ -75,18 +89,23 @@
     display: none;
     position: absolute;
     font-weight: bold;
-    top: 15%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
 }
 
-.championTextTags {
+.championImgTags {
     display: none;
-    position: absolute;
-    font-size: small;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+    position: relative;
+    margin-top: -120px;
+    width: 20%;
+    height: 20%;
+}
+
+#champName{
+    font-family: "Beaufort for LOL Bold";
+    font-style: italic;
+    color: #C2902D;
+    margin-bottom: 50px;
 }

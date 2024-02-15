@@ -26,16 +26,37 @@ function afficherChampion(json, champions) {
             if (championIndex >= champions.length) break;
 
             const url = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champions[championIndex]}_0.jpg`;
-            const championHTML = `
+            const championTag = json.data[champions[championIndex]].tags;
+            let championHTML = `
                 <div class="col">
-                    <div class="championImageContainer">
+                    <a href="#"><div class="championImageContainer">
                         <img src="${url}" class="img-fluid shadow-lg championImage">
-                        <div class="championTextTitle">${json.data[champions[championIndex]].title}</div>
-                        <div class="championTextTags">${json.data[champions[championIndex]].tags}</div>
+                        <div class ="championTextTitle">Titre :<br>${json.data[champions[championIndex]].title}</div>
+                        <div class = "d-flex justify-content-center">
+                        `;
+            
+            if (championTag[0] === 'Assassin' || championTag[1] === 'Assassin') {
+                championHTML += `<img src="medias/assassin-removebg.png" alt="" class="championImgTags">`;
+            } if (championTag[0] === 'Fighter' || championTag[1] === 'Fighter') {
+                championHTML += `<img src="medias/fighter-removebg.png" alt="" class="championImgTags">`;
+            } if (championTag[0] === 'Mage' || championTag[1] === 'Mage') {
+                championHTML += `<img src="medias/mage-removebg.png" alt="" class="championImgTags">`;
+            } if (championTag[0] === 'Marksman' || championTag[1] === 'Marksman') {
+                championHTML += `<img src="medias/marksman-removebg.png" alt="" class="championImgTags">`;
+            } if (championTag[0] === 'Support' || championTag[1] === 'Support') {
+                championHTML += `<img src="medias/support-removebg.png" alt="" class="championImgTags">`;
+            } if (championTag[0] === 'Tank' || championTag[1] === 'Tank') {
+                championHTML += `<img src="medias/tank-removebg.png" alt="" class="championImgTags">`;
+            }
+            
+            championHTML += `
                     </div>
-                    <p class="text-bg-dark p-3 text-center">${champions[championIndex]}</p>
+                    </div>
+                    </a>
+                    <h5 id="champName" class=" bg-dark p-3 text-center">${champions[championIndex]}</h5>
                 </div>
             `;
+            
             row.innerHTML += championHTML;
         }
     }
@@ -48,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function singedDeplacement(){
         const singed = document.getElementById('singed');
         let distance = 0;
-        const gap = "50px";
 
         function moveRight() {
             const moveRightInterval = setInterval(() => {
@@ -56,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 singed.style.left = distance + 'px';
         
                 // S'arrête lorsque le bord à droite est atteint
-                if (distance >= window.innerWidth - singed.clientWidth - gap ) {
+                if (distance >= window.innerWidth - singed.clientWidth) {
                     clearInterval(moveRightInterval);
                     singed.style.transform = "scaleX(1)";
                     moveLeft(); // Appelle la fonction pour commencer le mouvement vers la gauche
