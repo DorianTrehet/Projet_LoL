@@ -5,3 +5,17 @@
     width: 100px;
     height: 80px;
 }
+
+.fadeIn {
+    animation: fadeInAnimation 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
