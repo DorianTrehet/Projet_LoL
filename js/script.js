@@ -1,5 +1,6 @@
 // https://ddragon.leagueoflegends.com/cdn/14.3.1/data/fr_FR/champion.json
 
+
 async function getAPIChampion(){
     const url = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/fr_FR/champion.json";
     const response = await fetch(url);
@@ -15,7 +16,7 @@ function afficherChampion(json, champions) {
     container.classList.add('container', 'text-center');
     document.body.appendChild(container);
 
-    var rowCount = Math.ceil(champions.length / 5); // Utilisez la longueur de champions
+    var rowCount = Math.ceil(champions.length / 5); 
     for (var i = 0; i < rowCount; i++) {
         var row = document.createElement('div');
         row.classList.add('row');
@@ -31,8 +32,8 @@ function afficherChampion(json, champions) {
                 <div class="col">
                     <a href="#"><div class="championImageContainer">
                         <img src="${url}" class="img-fluid shadow-lg championImage">
-                        <div class ="championTextTitle">Titre :<br>${json.data[champions[championIndex]].title}</div>
-                        <div class = "d-flex justify-content-center">
+                        <div class ="championTextTitle">${json.data[champions[championIndex]].title}</div>
+                        <div class = "d-flex justify-content-around">
                         `;
             
             if (championTag[0] === 'Assassin' || championTag[1] === 'Assassin') {
@@ -51,7 +52,6 @@ function afficherChampion(json, champions) {
             
             championHTML += `
                     </div>
-                    </div>
                     </a>
                     <h5 id="champName" class=" bg-dark p-3 text-center">${champions[championIndex]}</h5>
                 </div>
@@ -65,6 +65,22 @@ function afficherChampion(json, champions) {
 document.addEventListener('DOMContentLoaded', function() {
     getAPIChampion();
     singedDeplacement();
+
+    const categories = document.getElementById('categories');
+
+    categories.addEventListener('click', function(event) {
+        event.preventDefault();
+        const category = event.target.dataset.category;
+        if (category) {
+            filterChampionsByCategory(category);
+        }
+    });
+
+    function filterChampionsByCategory(category) {
+        // Logique pour filtrer les champions par catégorie et afficher uniquement ceux correspondant à la catégorie sélectionnée
+        console.log('Catégorie sélectionnée :', category);
+        // Vous devez remplacer cette console.log par votre propre logique pour filtrer et afficher les champions selon la catégorie sélectionnée.
+    }
 
     function singedDeplacement(){
         const singed = document.getElementById('singed');

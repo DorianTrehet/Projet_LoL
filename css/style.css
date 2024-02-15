@@ -35,6 +35,7 @@
     padding-bottom: 35px;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
     background-clip: content-box, padding-box;
+    filter: invert(50%);
 }
 
 #banner_background{
@@ -59,6 +60,13 @@
 
 /* CSS CHAMPIONS */
 
+
+.searchChamp{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
 .championImageContainer {
     position: relative;
     display: inline-block;
@@ -66,7 +74,6 @@
 
 .championImageContainer:hover .championTextTitle, .championImageContainer:hover .championImgTags {
     display: block;
-    
 }
 
 .championImage {
@@ -81,7 +88,7 @@
 
 .championImageContainer:hover .championImage {
     transform: scale(1.1) translate(-2%);
-    filter: brightness(30%);
+    filter: brightness(20%);
     /* translate(-5%, -5%) déplace légèrement l'image vers le haut et la gauche pour garder le centre à la même position */
 }
 
