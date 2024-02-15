@@ -1,0 +1,7 @@
+#singed{
+    position: absolute;
+    transform: scaleX(-1);
+    left: 0;
+    width: 100px;
+    height: 80px;
+}
