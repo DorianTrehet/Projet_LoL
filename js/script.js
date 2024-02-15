@@ -7,41 +7,56 @@ async function getAPIChampion(){
 
     const championsList = Object.keys(data.data);
 
-    afficherChampion(championsList);
+    afficherChampion(data, championsList);
 }
 
-function afficherChampion(champions){
+function afficherChampion(json, champions) {
     var container = document.createElement('div');
     container.classList.add('container', 'text-center');
     document.body.appendChild(container);
-    
+
     var rowCount = Math.ceil(champions.length / 5); // Utilisez la longueur de champions
     for (var i = 0; i < rowCount; i++) {
         var row = document.createElement('div');
         row.classList.add('row');
         container.appendChild(row);
-    
+
         for (var j = 0; j < 5; j++) {
             var championIndex = i * 5 + j;
             if (championIndex >= champions.length) break;
-    
+
             var col = document.createElement('div');
             col.classList.add('col');
-            if (j >= 3 && championIndex === champions.length - 2) { // Vérifiez si c'est l'avant-dernier champion sur la ligne
-                col.classList.add('col-sm-6'); // Ajoutez une classe pour réduire la largeur de la colonne
+            if (j >= 3 && championIndex === champions.length - 2) {
+                col.classList.add('col-sm-6', 'w-75');
             }
             row.appendChild(col);
-            
-            const url = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/"+champions[championIndex]+"_0.jpg";
+
+            var imageContainer = document.createElement('div');
+            imageContainer.classList.add('championImageContainer'); // Ajouter la classe championImageContainer
+            col.appendChild(imageContainer);
+
+            const url = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + champions[championIndex] + "_0.jpg";
             var image = document.createElement('img');
-            image.src = url; 
-            image.classList.add('img-fluid', 'shadow-lg', 'p-3', 'mb-5', 'bg-dark', 'rounded', 'fadeIn'); // Ajoutez la classe fadeIn pour l'animation de fondu
-            col.appendChild(image);
-    
-            var title = document.createElement('p');
-            title.textContent = champions[championIndex];
-            title.classList.add('text-bg-dark', 'p-3', 'text-center');
-            col.appendChild(title);
+            image.src = url;
+            image.classList.add('img-fluid', 'shadow-lg', 'championImage'); // Ajouter la classe championImage
+            imageContainer.appendChild(image);
+
+            var name = document.createElement('p');
+            name.textContent = champions[championIndex];
+            name.classList.add('text-bg-dark', 'p-3', 'shadow-lg', 'text-center');
+            col.appendChild(name);
+
+            var title = document.createElement('div');
+            title.textContent = json.data[champions[championIndex]].title; 
+            title.classList.add('championTextTitle');
+            imageContainer.appendChild(title);
+
+            var blurb = document.createElement('div');
+            blurb.textContent = json.data[champions[championIndex]].tags; 
+            blurb.classList.add('championTextTags');
+            imageContainer.appendChild(blurb);
+
         }
     }
 }
@@ -57,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function moveRight() {
             const moveRightInterval = setInterval(() => {
-                distance += 50;
+                distance += 10;
                 singed.style.left = distance + 'px';
         
                 // S'arrête lorsque le bord à droite est atteint
@@ -71,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function moveLeft() {
             const moveLeftInterval = setInterval(() => {
-                distance -= 50;
+                distance -= 10;
                 singed.style.left = distance + 'px';
         
                 // S'arrête lorsque le bord à gauche est atteint
