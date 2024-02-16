@@ -30,11 +30,12 @@ function afficherChampion(json, champions) {
             const championTag = json.data[champions[championIndex]].tags;
             let championHTML = `
                 <div class="col">
-                    <a href="#"><div class="championImageContainer">
-                        <img src="${url}" class="img-fluid shadow-lg championImage">
-                        <div class ="championTextTitle">${json.data[champions[championIndex]].title}</div>
-                        <div class = "d-flex justify-content-around">
-                        `;
+                    <a href="detail-champion.html?champion=${champions[championIndex]}">
+                        <div class="championImageContainer">
+                            <img src="${url}" class="img-fluid shadow-lg championImage">
+                            <div class ="championTextTitle">${json.data[champions[championIndex]].title}</div>
+                            <div class = "d-flex justify-content-around">
+                            `;
             
             if (championTag[0] === 'Assassin' || championTag[1] === 'Assassin') {
                 championHTML += `<img src="medias/assassin-removebg.png" alt="" class="championImgTags">`;
