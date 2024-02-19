@@ -16,3 +16,8 @@ async function getAPIChampionDetails(championName) {
     console.log(data);
     // afficherChampion(data, championsList);
 }
+document.addEventListener('DOMContentLoaded', function() {
+
+    let background = document.getElementById("background");
+    background.style.backgroundImage = "url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg')";
+});

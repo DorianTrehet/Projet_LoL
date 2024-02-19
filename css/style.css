@@ -10,10 +10,6 @@
     url("https://db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.svg#Beaufort for LOL Bold")format("svg");
 }
 
-
-
-
-
 #container-global::before {
     content: "";
     position: fixed;
